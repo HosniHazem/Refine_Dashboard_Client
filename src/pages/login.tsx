@@ -4,6 +4,8 @@ import { useEffect, useRef } from "react";
 import { Box, Container, Typography } from "@mui/material";
 import { ThemedTitle } from "@refinedev/mui";
 
+import { yariga } from "assets";
+
 import { CredentialResponse } from "../interfaces/google";
 
 // Todo: Update your Google Client ID here
@@ -24,7 +26,7 @@ export const Login: React.FC = () => {
       try {
         window.google.accounts.id.initialize({
           ux_mode: "popup",
-          client_id: GOOGLE_CLIENT_ID,
+          client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID,
           callback: async (res: CredentialResponse) => {
             if (res.credential) {
               login(res);
